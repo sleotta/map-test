@@ -19,11 +19,16 @@ function App() {
         maxBoundsViscosity: 1,
         bounceAtZoomLimits: false
       })
-      Leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        noWrap: true,
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      }).addTo(map);
+      Leaflet.tileLayer(
+        // 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        'http://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}',
+          {
+          noWrap: true,
+          maxZoom: 19,
+          minZoom: 3,
+          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        })
+        .addTo(map);
 
       const clownIcon = Leaflet.icon({
         iconUrl: clown,
@@ -53,7 +58,7 @@ function App() {
   }, [container]);
   return (
     <div className="App">
-      <div ref={r => setContainer(r)} style={{ width: '100vw', height: '100vw'}}>
+      <div ref={r => setContainer(r)} style={{ width: '100vw', height: '100vh'}}>
       </div>
     </div>
   );
